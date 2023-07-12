@@ -13,24 +13,24 @@ An [Expo config plugin](https://docs.expo.io/guides/config-plugins) for easily s
 #### With `expo install`
 
 ```
-expo install config-plugin-react-native-intercom
+expo install react-native-intercom-expo-config-plugin
 ```
 
 #### Without `expo install`
 
 ```sh
 # using yarn
-yarn add config-plugin-react-native-intercom
+yarn add react-native-intercom-expo-config-plugin
 
 # using npm
-npm install config-plugin-react-native-intercom
+npm install react-native-intercom-expo-config-plugin
 ```
 
 Open your `app.json` and update your `plugins` section (`expo install` would do it for you):
 
 ```json
 {
-  "plugins": ["config-plugin-react-native-intercom"]
+  "plugins": ["react-native-intercom-expo-config-plugin"]
 }
 ```
 
@@ -42,7 +42,7 @@ The plugin needs your intercom api key so that it can communicate with the inter
 {
   "plugins": [
     [
-      "config-plugin-react-native-intercom",
+      "react-native-intercom-expo-config-plugin",
       {
         "iosApiKey": "<your-api-key>",
         "androidApiKey": "<your-api-key>",
@@ -63,7 +63,7 @@ The plugin needs your intercom api key so that it can communicate with the inter
 {
   "plugins": [
     [
-      "config-plugin-react-native-intercom",
+      "react-native-intercom-expo-config-plugin",
       {
         //...
         "iosPhotoUsageDescription": "Upload to support center"

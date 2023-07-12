@@ -264,7 +264,7 @@ const createMainNotificationService = async (projectRoot: string) => {
     );
   } catch (e) {
     WarningAggregator.addWarningAndroid(
-      "config-plugin-react-native-intercom",
+      "react-native-intercom-expo-config-plugin",
       `Couldn't create MainNotificationService.java - ${e}.`
     );
   }

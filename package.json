@@ -1,8 +1,9 @@
 {
   "private": true,
+  "homepage": "https://github.com/Malaa-tech/react-native-intercom-expo-config-plugin",
   "scripts": {
     "example": "yarn workspace @expo/app",
-    "config-plugin": "yarn workspace config-plugin-react-native-intercom",
+    "config-plugin": "yarn workspace react-native-intercom-expo-config-plugin",
     "start": "lerna run build --parallel -- --watch",
     "prepare": "lerna run prepare --parallel",
     "publish": "lerna publish"

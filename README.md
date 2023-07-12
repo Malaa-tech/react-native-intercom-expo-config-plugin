@@ -31,17 +31,17 @@ An unofficial [Expo config plugin](https://docs.expo.io/guides/config-plugins) f
 #### With `expo install`
 
 ```
-expo install config-plugin-react-native-intercom expo-build-properties
+expo install react-native-intercom-expo-config-plugin expo-build-properties
 ```
 
 #### Without `expo install`
 
 ```sh
 # using yarn
-yarn add config-plugin-react-native-intercom expo-build-properties
+yarn add react-native-intercom-expo-config-plugin expo-build-properties
 
 # using npm
-npm install config-plugin-react-native-intercom expo-build-properties
+npm install react-native-intercom-expo-config-plugin expo-build-properties
 ```
 
 Open your `app.json` and update your `plugins` section:
@@ -53,7 +53,7 @@ Open your `app.json` and update your `plugins` section:
       "expo-build-properties",
       { "android": { "compileSdkVersion": 33, "targetSdkVersion": 33 } }
     ],
-    "config-plugin-react-native-intercom"
+    "react-native-intercom-expo-config-plugin"
   ]
 }
 ```
@@ -66,7 +66,7 @@ The plugin needs your intercom api key so that it can communicate with the inter
 {
   "plugins": [
     [
-      "config-plugin-react-native-intercom",
+      "creact-native-intercom-expo-config-plugin",
       {
         "iosApiKey": "<your-api-key>",
         "androidApiKey": "<your-api-key>",
@@ -86,7 +86,7 @@ The plugin needs your intercom api key so that it can communicate with the inter
 {
   "plugins": [
     [
-      "config-plugin-react-native-intercom",
+      "react-native-intercom-expo-config-plugin",
       {
         //...
         "iosPhotoUsageDescription": "Upload to support center"
@@ -119,7 +119,7 @@ The plugin needs your intercom api key so that it can communicate with the inter
 {
   "plugins": [
     [
-      "config-plugin-react-native-intercom",
+      "react-native-intercom-expo-config-plugin",
       {
         //...
         "intercomEURegion": "true"
@@ -140,7 +140,7 @@ The plugin needs your intercom api key so that it can communicate with the inter
 {
   "plugins": [
     [
-      "config-plugin-react-native-intercom",
+      "react-native-intercom-expo-config-plugin",
       {
         //...
         "isPushNotificationsEnabledIOS": true
@@ -155,7 +155,7 @@ The plugin needs your intercom api key so that it can communicate with the inter
 {
   "plugins": [
     [
-      "config-plugin-react-native-intercom",
+      "react-native-intercom-expo-config-plugin",
       {
         //...
         "isPushNotificationsEnabledAndroid": true,

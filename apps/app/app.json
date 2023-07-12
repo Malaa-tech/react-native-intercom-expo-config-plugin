@@ -34,7 +34,7 @@
         { "android": { "compileSdkVersion": 33, "targetSdkVersion": 33 } }
       ],
       [
-        "config-plugin-react-native-intercom",
+        "react-native-intercom-expo-config-plugin",
         {
           "iosApiKey": "myIosApiKey",
           "androidApiKey": "myAndroidApiKey",

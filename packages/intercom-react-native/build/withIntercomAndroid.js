@@ -200,7 +200,7 @@ const createMainNotificationService = async (projectRoot) => {
         return await saveFileAsync(filePath, getMainNotificationService(packageName));
     }
     catch (e) {
-        config_plugins_1.WarningAggregator.addWarningAndroid("config-plugin-react-native-intercom", `Couldn't create MainNotificationService.java - ${e}.`);
+        config_plugins_1.WarningAggregator.addWarningAndroid("react-native-intercom-expo-config-plugin", `Couldn't create MainNotificationService.java - ${e}.`);
     }
 };
 const modifyMainApplication = ({ contents, apiKey, appId, packageName, }) => {
