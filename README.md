@@ -1,3 +1,5 @@
+This repo is a continuation on the work of https://github.com/expo/config-plugins since it is not updated frequently 
+
 # Expo Config Plugin `@intercom/intercom-react-native`
 
 An unofficial [Expo config plugin](https://docs.expo.io/guides/config-plugins) for easily setting up [React Native Intercom](https://github.com/intercom/intercom-react-native) with expo dev clients
