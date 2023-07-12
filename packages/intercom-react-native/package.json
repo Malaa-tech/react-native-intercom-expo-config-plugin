@@ -1,0 +1,40 @@
+{
+  "name": "config-plugin-react-native-intercom",
+  "version": "1.10.1",
+  "description": "Config plugin for intercom-react-native package",
+  "main": "build/withIntercom.js",
+  "types": "build/withIntercom.d.ts",
+  "homepage": "",
+  "sideEffects": false,
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly"
+  },
+  "keywords": [
+    "intercom",
+    "react-native",
+    "config-plugins",
+    "expo",
+    "config",
+    "plugin"
+  ],
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^7.2.5",
+    "semver": "^7.3.8"
+  },
+  "peerDependencies": {
+    "@intercom/intercom-react-native": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/semver": "^7.3.13",
+    "expo-module-scripts": "^3.0.4"
+  },
+  "gitHead": "8c3e2de293395aeec0a546b8794370125e8c3c2e"
+}
