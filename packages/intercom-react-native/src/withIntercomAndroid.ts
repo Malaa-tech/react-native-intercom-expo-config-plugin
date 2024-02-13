@@ -52,24 +52,22 @@ async function saveFileAsync(path: string, content: string) {
 
 function getMainNotificationService(packageName: string) {
   return `package ${packageName};
-import expo.modules.notifications.service.ExpoFirebaseMessagingService;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.intercom.reactnative.IntercomModule;
 
-public class MainNotificationService extends ExpoFirebaseMessagingService {
 
-  @Override
-  public void onNewToken(String refreshedToken) {
+public class MainNotificationService extends FirebaseMessagingService {
+
+  @Override public void onNewToken(String refreshedToken) {
     IntercomModule.sendTokenToIntercom(getApplication(), refreshedToken);
-    super.onNewToken(refreshedToken);
   }
 
-  @Override
   public void onMessageReceived(RemoteMessage remoteMessage) {
     if (IntercomModule.isIntercomPush(remoteMessage)) {
       IntercomModule.handleRemotePushMessage(getApplication(), remoteMessage);
     } else {
-      super.onMessageReceived(remoteMessage);
+      // HANDLE NON-INTERCOM MESSAGE
     }
   }
 }`;
@@ -170,8 +168,9 @@ export const withIntercomAndroidManifest: ConfigPlugin<{
 
 const withIntercomProjectBuildGradle: ConfigPlugin<object> = (config) => {
   return withProjectBuildGradle(config, async (config) => {
-    const googleClasspath = `classpath 'com.google.gms:google-services:4.3.15'`;
-    if (!config.modResults.contents.includes(googleClasspath)) {
+    const googleClasspath = `classpath 'com.google.gms:google-services:4.2.0'`;
+    
+    if (!config.modResults.contents.includes('com.google.gms:google-services')) {
       const anchor = `dependencies {`;
       config.modResults.contents = config.modResults.contents.replace(
         `${anchor}`,
@@ -186,20 +185,11 @@ const withIntercomProjectBuildGradle: ConfigPlugin<object> = (config) => {
 export const withIntercomAppBuildGradle: ConfigPlugin<{
   pushNotifications: boolean;
 }> = (config, { pushNotifications }) => {
-  return withAppBuildGradle(config, async (config) => {
-    config.modResults.contents = mergeContents({
-      tag: "okhttp-urlconnection",
-      src: config.modResults.contents,
-      newSrc:
-        "    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.10.+'",
-      anchor: /dependencies\s*\{/,
-      offset: 1,
-      comment: "//",
-    }).contents;
+  return withAppBuildGradle(config, async (config) => {    
     if (pushNotifications) {
-      const firebaseImp = `implementation 'com.google.firebase:firebase-messaging:23.1.+'`;
+      const firebaseImp = `implementation 'com.google.firebase:firebase-messaging:20.2.+'`;
       if (!config.modResults.contents.includes(firebaseImp)) {
-        const anchor = `implementation "com.facebook.react:react-native:+"  // From node_modules`;
+        const anchor = `implementation("com.facebook.react:react-android")`;
         config.modResults.contents = config.modResults.contents.replace(
           anchor,
           `${anchor}
@@ -287,19 +277,19 @@ const modifyMainApplication = ({
 
   const importLine = `import com.intercom.reactnative.IntercomModule;`;
   if (!contents.includes(importLine)) {
-    const packageImport = `package ${packageName};`;
+    const packageImport = `package ${packageName}`;
     // Add the import line to the top of the file
     // Replace the first line with the intercom import
     contents = contents.replace(
       `${packageImport}`,
-      `${packageImport}\n${importLine}`
+      `${packageImport}\n\n${importLine}`
     );
   }
 
   const initLine = `IntercomModule.initialize(this, "${apiKey}", "${appId}");`;
 
   if (!contents.includes(initLine)) {
-    const soLoaderLine = `SoLoader.init(this, /* native exopackage */ false);`;
+    const soLoaderLine = `SoLoader.init(this, false)`;
     // Replace the line SoLoader.init(this, /* native exopackage */ false); with regex
     contents = contents.replace(
       `${soLoaderLine}`,
